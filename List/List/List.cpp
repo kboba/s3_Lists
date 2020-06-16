@@ -54,7 +54,7 @@ List::Node * List::find(const size_t idx)
 {
     Node * node = first;
 
-    for (size_t i = 0; i < 3; i++)
+    for (size_t i = 0; i < idx; i++)
     {
         node = node->next;
     }
@@ -162,9 +162,7 @@ List::Error List::pop_back()
         return Error::LIST_EMPTY;
 
     Node* pre_last = find(size-2);
-    Node* last =pre_last->next; //potrzebne ?
-    //delete pre_last->next;
-    delete last;
+    delete pre_last->next;
     pre_last->next = nullptr;
     
     size--;
